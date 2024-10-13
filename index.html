@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Currency Rate Converter</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>Currency Rate Converter</h1>
+    <form action="/api/v1/get_rate" method="GET">
+        <label for="from_currency">From Currency:</label>
+        <input type="text" id="from_currency" name="from_currency" required>
+        <br>
+        <label for="to_currency">To Currency:</label>
+        <input type="text" id="to_currency" name="to_currency" required>
+        <br>
+        <button type="submit">Convert</button>
+    </form>
+    <div id="result"></div>
+    <script src="script.js"></script>
+</body>
+</html>
