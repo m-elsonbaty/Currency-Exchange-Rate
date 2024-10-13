@@ -1,4 +1,5 @@
 from flask import Flask, jsonify
+
 from bs4 import BeautifulSoup
 import requests
 
@@ -18,12 +19,12 @@ def get_currency_rate(from_currency, to_currency):
         print(f"Error fetching currency rate: {e}")
         return None
 
-app = Flask(__name__)
+app = Flask(__name__, static_url_path='/static')  # Set static folder path
 
 @app.route('/')
 def home():
     """Displays a simple home page."""
-    return '<h1>Currency Rate API</h1> <p>Example URL: /api/v1/usd-eur</p>'
+    return app.send_static_file('index.html')  # Serve index.html from static folder
 
 @app.route('/api/v1/<from_currency>-<to_currency>')
 def get_rate(from_currency, to_currency):
@@ -39,4 +40,5 @@ def get_rate(from_currency, to_currency):
     return jsonify(result)
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0')
+    # Remove app.run for GitHub Pages deployment
+    pass  # Comment out this line
